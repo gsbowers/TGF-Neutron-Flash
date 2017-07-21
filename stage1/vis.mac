@@ -1,0 +1,201 @@
+/testhadr/phys/thermalScattering true
+/run/initialize
+
+# Use these open statement to open selected visualization
+/vis/open OGL 800x600-0+0
+/vis/viewer/zoom 1.60
+
+# Set auxiliary Edge visualization on
+/vis/viewer/set/auxiliaryEdge True
+
+#
+# Disable auto refresh and queiten vis messages whilst scene and 
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+#
+# Draw Geometry:
+/vis/drawVolume
+
+#
+# Specify view angle:
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+
+#
+# Draw smooth trajectories at end of event, showing trajector points
+# as markers 2 pixels wide:
+
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set gamma red
+/vis/modeling/trajectories/drawByParticleID-0/set e- yellow
+/vis/modeling/trajectories/drawByParticleID-0/set neutron green
+
+#/vis/modeling/trajectories/create/drawByCharge
+#/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+#/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+#
+# Draw axes
+/vis/scene/add/axes 0 4.2 -2 3 km 
+/vis/viewer/set/viewpointVector 1 0 0
+/vis/viewer/set/upVector 0 0 1
+
+#
+# Draw hits at end of event
+/vis/scene/add/hits
+
+#
+# To superimpose all of the vents from a given run:
+/vis/scene/endOfEventAction accumulate 0
+#
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+# default GPS
+# https://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/html/ch02s07.html
+
+# Source position and structure
+/gps/direction 0 0 -1  
+/gps/pos/centre 0 0 2 km
+/gps/pos/type Beam
+/gps/ang/type beam1d
+/gps/ang/sigma_r 15.3 deg
+
+# Energy Distribution
+/gps/particle gamma
+/gps/ene/type User
+/gps/hist/type energy
+
+#/gps/hist/point 0.0225221 0.37481104424261186
+#/gps/hist/point 0.0239 0.37474240306048917
+#/gps/hist/point 0.0253622 0.3746695761303403
+#/gps/hist/point 0.0269139 0.3745923090977952
+#/gps/hist/point 0.0285605 0.3745103322647779
+#/gps/hist/point 0.0303078 0.3744233596781259
+#/gps/hist/point 0.0321621 0.37433108816587873
+#/gps/hist/point 0.0341298 0.3742331963184609
+#/gps/hist/point 0.0362179 0.37412934341186976
+#/gps/hist/point 0.0384337 0.3740191682698604
+#/gps/hist/point 0.0407851 0.3739022880620034
+#/gps/hist/point 0.0432804 0.3737782970343734
+#/gps/hist/point 0.0459283 0.37364676516951706
+#/gps/hist/point 0.0487382 0.37350723677223246
+#/gps/hist/point 0.05172 0.37335922897759066
+#/gps/hist/point 0.0548843 0.3732022301775306
+#/gps/hist/point 0.0582421 0.37303569836226474
+#/gps/hist/point 0.0618054 0.37285905937265545
+#/gps/hist/point 0.0655867 0.37267170505965475
+#/gps/hist/point 0.0695994 0.37247299134684725
+#/gps/hist/point 0.0738575 0.3722622361921071
+#/gps/hist/point 0.0783761 0.3720387174443695
+#/gps/hist/point 0.0831712 0.37180167059153957
+#/gps/hist/point 0.0882597 0.3715502863956096
+#/gps/hist/point 0.0936595 0.37128370841115066
+#/gps/hist/point 0.0993896 0.37100103038347504
+#/gps/hist/point 0.10547 0.37070129352295506
+#/gps/hist/point 0.111923 0.3703834836522296
+#/gps/hist/point 0.118771 0.37004652822334305
+#/gps/hist/point 0.126037 0.3696892932022564
+#/gps/hist/point 0.133748 0.36931057981865106
+#/gps/hist/point 0.141931 0.3689091211795352
+#/gps/hist/point 0.150614 0.368483578745862
+#/gps/hist/point 0.159829 0.36803253867220526
+#/gps/hist/point 0.169607 0.36755450801052086
+#/gps/hist/point 0.179984 0.3670479107801765
+#/gps/hist/point 0.190996 0.3665110839077731
+#/gps/hist/point 0.202681 0.365942273041837
+#/gps/hist/point 0.215081 0.3653396282492552
+#/gps/hist/point 0.22824 0.36470119960238606
+#/gps/hist/point 0.242204 0.3640249326681343
+#/gps/hist/point 0.257022 0.36330866391296235
+#/gps/hist/point 0.272746 0.3625501160408673
+#/gps/hist/point 0.289433 0.36174689328479914
+#/gps/hist/point 0.307141 0.36089647667590374
+#/gps/hist/point 0.325932 0.35999621931935727
+#/gps/hist/point 0.345873 0.35904334171048413
+#/gps/hist/point 0.367033 0.35803492713035845
+#/gps/hist/point 0.389489 0.3569679171662269
+#/gps/hist/point 0.413318 0.3558391074089249
+#/gps/hist/point 0.438605 0.354645143387017
+#/gps/hist/point 0.465439 0.35338251680575666
+#/gps/hist/point 0.493915 0.35204756216815675
+#/gps/hist/point 0.524133 0.35063645386555614
+#/gps/hist/point 0.5562 0.3491452038360906
+#/gps/hist/point 0.590228 0.3475696599014743
+#/gps/hist/point 0.626339 0.34590550490549
+#/gps/hist/point 0.664658 0.3441482567915915
+#/gps/hist/point 0.705323 0.3422932697720294
+#/gps/hist/point 0.748475 0.3403357367569053
+#/gps/hist/point 0.794267 0.33827069322847436
+#/gps/hist/point 0.84286 0.3360930227637718
+#/gps/hist/point 0.894427 0.333797464427099
+/gps/hist/point 0.949149 0.3313786222728928
+/gps/hist/point 1.00722 0.32883097721876636
+/gps/hist/point 1.06884 0.32614890156774584
+/gps/hist/point 1.13423 0.3233266764775199
+/gps/hist/point 1.20363 0.3203585126923849
+/gps/hist/point 1.27726 0.31723857486987506
+/gps/hist/point 1.35541 0.3139610098480838
+/gps/hist/point 1.43833 0.31051997921051167
+/gps/hist/point 1.52633 0.3069096965118621
+/gps/hist/point 1.61971 0.3031244695293158
+/gps/hist/point 1.71881 0.2991587478980156
+/gps/hist/point 1.82397 0.2950071764751519
+/gps/hist/point 1.93556 0.2906646547522953
+/gps/hist/point 2.05397 0.28612640259841077
+/gps/hist/point 2.17964 0.28138803256402045
+/gps/hist/point 2.31299 0.2764456289077825
+/gps/hist/point 2.4545 0.2712958334176784
+/gps/hist/point 2.60467 0.26593593798729515
+/gps/hist/point 2.76402 0.26036398377056147
+/gps/hist/point 2.93313 0.2545788665730086
+/gps/hist/point 3.11258 0.24858044794165027
+/gps/hist/point 3.30301 0.24236967118673602
+/gps/hist/point 3.50509 0.2359486813053572
+/gps/hist/point 3.71953 0.22932094747843906
+/gps/hist/point 3.94709 0.22249138647948252
+/gps/hist/point 4.18858 0.2154664849674962
+/gps/hist/point 4.44484 0.20825441824181645
+/gps/hist/point 4.71678 0.20086516261929407
+/gps/hist/point 5.00535 0.19331059816387133
+/gps/hist/point 5.31158 0.18560459806752533
+/gps/hist/point 5.63655 0.17776310056640432
+/gps/hist/point 5.9814 0.16980415889749614
+/gps/hist/point 6.34734 0.16174796448462445
+/gps/hist/point 6.73567 0.15361683831784909
+/gps/hist/point 7.14777 0.1454351853917251
+/gps/hist/point 7.58507 0.13722940713339396
+/gps/hist/point 8.04913 0.12902776702188717
+/gps/hist/point 8.54158 0.12086020511705228
+/gps/hist/point 9.06416 0.1127580980205079
+/gps/hist/point 9.61871 0.1047539619177738
+/gps/hist/point 10.2072 0.09688109782743988
+/gps/hist/point 10.8317 0.08917318002389249
+/gps/hist/point 11.4944 0.0816637908000246
+/gps/hist/point 12.1976 0.07438590726648975
+/gps/hist/point 12.9438 0.06737134868538733
+/gps/hist/point 13.7358 0.0606501958148194
+/gps/hist/point 14.5761 0.05425019676409689
+/gps/hist/point 15.4679 0.04819617675552868
+/gps/hist/point 16.4142 0.04250947174855565
+/gps/hist/point 17.4185 0.03720740786607477
+/gps/hist/point 18.4841 0.03230284971376527
+/gps/hist/point 19.615 0.027803840744091715
+/gps/hist/point 20.8151 0.023713357555112936
+/gps/hist/point 22.0885 0.020029197252063445
+/gps/hist/point 23.4399 0.01674401264536212
+/gps/hist/point 24.874 0.013845504139900424
+/gps/hist/point 26.3958 0.011316769862116436
+/gps/hist/point 28.0107 0.009136807213961925
+/gps/hist/point 29.7244 0.007281150145072325
+/gps/hist/point 31.543 0.0057226176547334326
+/gps/hist/point 33.4728 0.004432141138894051
+/gps/hist/point 35.5207 0.0033796319882142775
+/gps/hist/point 37.6939 0.0025348470728588676
+/gps/hist/point 40. 0.001868209014983729
+
+
