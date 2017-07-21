@@ -10,7 +10,7 @@ My final geant4 directory sturcture on SOL is
 
 Hints for my Geant4 installation (CentOS 6.7): 
 
-1.)  Building Geant4
+1.) Building Geant4
 
 At step 2.1, set the following cmake flags 
 
@@ -22,7 +22,7 @@ i.e., in geat4.10.02.p02-build, do
 
 cmake -DGEANT4_USE_SYSTEM_EXPAT=OFF -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_OPENGL_X11=ON -DCMAKE_INSTALL_PREFIX=../geant4.10.02.p02-install/ ../geant4.10.02.p02
 
-3.)  Building project
+3.) Building project
 
 Create next to directory 'stage1' the directory 'stage1-build' 
 
@@ -32,7 +32,7 @@ in stage1-build do
 :cmake -DGeant4_DIR=/usr/local/geant4/geant4.10.02.p02-install/lib/Geant4-10.02/ ../stage1
 :make
 
-4.)  Running project
+4.) Stage1 input
 
 TGF Simulation paramaeters are specified in an input file (e.g. 'input'). 
 To run simulation, in stage1-build do 
@@ -40,14 +40,18 @@ To run simulation, in stage1-build do
 ./run <input> > <output>
 
 this will create 13 output files names <input>_SlabNN.out where <input> 
-is the input filename, and NN is the atmospheric slab number. <output> is
-a text file containing the output of the GEANT4 program execution and 
-provides information on the geometry, physics packages, and number of
-input particles simulated
+is the input filename, and NN is the atmospheric slab number. 
 
-5.)  Output 
+<output> is a text file containing the output of the GEANT4 program 
+execution and provides information on the geometry, physics packages, and 
+number of input particles simulated. 
+
+5.) Stage1 output 
+
+The stage2 program execution generates several output files named
+according to the convention <input>_SlabNN.out
 
 the output files <input>_SlabNN.out contain information on the 
 photoneutrons generated in the corresponding slab from the TGF 
-specified in <input>.  These output files will be used as inputs
-into the stage2 simulation 
+specified in <input>.  The particles in these output files will be used 
+as input particles into stage2.
