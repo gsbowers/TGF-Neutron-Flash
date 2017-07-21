@@ -1,0 +1,4 @@
+/testhadr/phys/thermalScattering true
+/run/initialize
+
+/run/beamOn 100000000

@@ -1,0 +1,36 @@
+1.) Building project
+
+create next to directory 'stage3' the directory 'stage3-build'
+
+in event3-build do 
+
+:source /usr/local/geant4/geant4.10.01.p02-install/bin/geant4.sh
+:cmake -DGeant4_DIR=/usr/local/geant4/geant4.10.02.p02-install/lib/Geant4-10.02/ ../stage3
+:make
+
+2.) Stage3 input
+
+A list of particles to be read in and input into the simulation are
+in an input file GODOT_<input>.out.  To run simulation, in stage2-build do 
+
+./run GODOT_<input>.out input > <output> 
+
+this will simulate a total of N_{3,in} particles (specified in the command 
+/run/beamOn N_{3,in} in input) chosen from the particles listed in 
+GODOT_<input>.out, which is a combination of all stage2 output files
+(GODOT_<input>_SlabNN.out, NN = 0, 13)
+
+<output> is a text file containing the output of the GEANT4 program 
+execution and provides information on the geometry, physics packages, and 
+number of input particles simulated. 
+
+3.) Stage3 output
+
+The stage3 program execution generates three output files named 
+according to the convention LgPl_GODOT_<input>.out,  
+SmPl_GODOT_<input>.out, LgNaI_GODOT_<input>.out, where <input> is the
+name of the initial input file used in stage 1.
+
+Each output file, <detector>_GODOT_<input>.out contains information on 
+the energy deposited in the modeled detectore from the stage2 output 
+particle interactions.   

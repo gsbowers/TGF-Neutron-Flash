@@ -1,0 +1,66 @@
+/testhadr/phys/thermalScattering true
+/run/initialize
+
+# Use these open statement to open selected visualization
+/vis/open OGL 800x800-0+0
+
+# Set auxiliary Edge visualization on
+/vis/viewer/set/auxiliaryEdge True
+
+#
+# Disable auto refresh and queiten vis messages whilst scene and 
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+#
+# Draw Geometry:
+/vis/drawVolume
+
+#
+# Specify view angle:
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+
+#
+# Draw smooth trajectories at end of event, showing trajector points
+# as markers 2 pixels wide:
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+#
+# Draw axes
+/vis/scene/add/axes 0 0 55 10 cm 
+/vis/viewer/set/viewpointVector 1 0 0
+/vis/viewer/set/upVector 0 0 1
+
+#
+# Draw hits at end of event
+/vis/scene/add/hits
+
+#
+# To superimpose all of the vents from a given run:
+/vis/scene/endOfEventAction accumulate 0
+#
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+# default GPS
+# https://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/html/ch02s07.html
+
+# Energy Distribution
+/gps/particle gamma
+/gps/direction 0 0 -1
+/gps/energy 1 MeV
+
+
+# Source position and structure
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/centre 0 0 25 cm
+/gps/pos/radius 5 cm
+
+
