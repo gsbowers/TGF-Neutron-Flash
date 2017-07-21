@@ -1,0 +1,33 @@
+1.) Building project
+
+create next to directory 'stage2' the directory 'stage2-build'
+
+in event2-build do 
+
+:source /usr/local/geant4/geant4.10.01.p02-install/bin/geant4.sh
+:cmake -DGeant4_DIR=/usr/local/geant4/geant4.10.02.p02-install/lib/Geant4-10.02/ ../stage2
+:make
+
+2.) Stage2 input
+
+A list of particles to be read in and input into the simulation are
+in an input file <input>_SlabNN.out.  To run simulation, in stage2-build do 
+
+./run <input>_SlabNN.out > <output> 
+
+this will run each particle listed in <input>_SlabNN.out 1000 times into 
+the same model atmosphere/ground used in stage1 
+
+<output> is a text file containing the output of the GEANT4 program 
+execution and provides information on the geometry, physics packages, and 
+number of input particles simulated. 
+
+3.) Stage2 output
+
+The stage2 program execution generations one output file named 
+according to the convention GODOT_<input>_SlabNN.out 
+
+The output file GODOT_<input>_SlabNN.out contains the particles that have
+crossed the upper and lower boundary of a 1m tall volume on the ground 
+that represents the physical height of the GODOT instrument.  The 
+particles in this output file will be used as input particles into stage3 
